@@ -37,6 +37,8 @@ t2->rchild=t;
 }
 return root;
 }
+
+//Function to Display items in BST
 void inorder(struct node *root)
 {
 if(root!=(struct node *)0)
@@ -46,6 +48,8 @@ printf("%d\t",root->data);
 inorder(root->rchild);
 }
 }
+
+//Function to Search an item in BST
 struct node *search(struct node *root,int item)
 {
 struct node *t=root;
@@ -56,6 +60,8 @@ else
 t=t->rchild;
 return t;
 }
+
+//Function to Delete an item in BST......
 struct node *delete(struct node *root,int item)
 {
 struct node *t1,*t,*par,*sucpar,*suc;
@@ -69,7 +75,7 @@ t=t->lchild;
 else t=t->rchild;
 }
 if(t==(struct node *)0)//not found
-printf("%d Item not found \n",item);
+printf("Item %d is not found \n",item);
 else//item found
 {
 if(t->lchild==(struct node *)0 && t->rchild==(struct node *)0)//leaf node or zero child case
@@ -108,12 +114,13 @@ sucpar->rchild=suc->rchild;
 t=suc;
 }
 free(t);
+printf("%d is deleted from BST\n",item);
+}
 return root;
 }
-}
  
  
- 
+//Main function
  
 int main()
 {
@@ -139,22 +146,19 @@ case 1:
 case 2:inorder (t);
        break;
 case 3:printf("item to search:");
-    scanf("%d",&data);
-    t1=search(t,data);
-    if(t1==(struct node *)0)
-    {
-    printf("Item not found\n");
-    }
-    else
-    printf("Item found\n");
-    break;
+       scanf("%d",&data);
+       t1=search(t,data);
+       if(t1==(struct node *)0)
+       {
+       printf("Item %d is not found\n",data);
+       }
+       else
+       printf("Item %d is found in BST\n",data);
+       break;
 case 4:printf("item to delete:");
-    scanf("%d",&data);
-   
-    t=delete(t,data);
- 
-   
-    break;
+       scanf("%d",&data);
+       t=delete(t,data);
+       break;
 case 5:exit(0);
     }
     }
